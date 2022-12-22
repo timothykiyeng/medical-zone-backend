@@ -1,5 +1,5 @@
 class AppointmentsController < ApplicationController
-  
+
   skip_before_action :is_doc, only: [:index]
   skip_before_action :authorize, only: [:index]
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
@@ -37,7 +37,7 @@ def find_appointment
 end
 
 def appointment_params
-  params.permit(:id, :title, :start_date, :end_date, :notes, :patient_id, :doctor_id)
+  params.permit(:id, :title, :start_date, :end_date, :description, :patient_id, :doctor_id)
 end
 
 def record_invalid(invalid)
@@ -46,6 +46,6 @@ end
 
 def record_not_found(not_found)
   render json: not_found, status: 404
-end 
+end
 
 end

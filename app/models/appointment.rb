@@ -4,5 +4,5 @@ class Appointment < ApplicationRecord
 
   validates :patient, presence: true
   validates :doctor, presence: true
-  validates :Description, presence: true
+  validates :description, presence: true
 end
