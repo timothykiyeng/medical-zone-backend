@@ -13,7 +13,7 @@ class Doctor < ApplicationRecord
 
     validates :email, presence: true, uniqueness: true
     validates :name, presence: true
-    validates :my_email_attribute, email: true
+    validates :email, email: true
     validate :permitted_email
 
 end
