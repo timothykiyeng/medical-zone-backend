@@ -1,5 +1,6 @@
 class DoctorsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_message
+    rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
     def index
         doctors = Doctor.all
         render json: doctors, status: :ok
@@ -21,5 +22,9 @@ class DoctorsController < ApplicationController
 
     def doctor_params
         params.require(:doctor).permit(:id, :title, :name, :bio, :department_id, :patient_id, :email, :password_digest)
+    end
+
+    def record_invalid(invalid)
+        render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
     end
 end
