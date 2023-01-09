@@ -18,6 +18,12 @@ class AppointmentsController < ApplicationController
     render json: appointment.update!(appointment_params), status: :ok
   end
 
+  def destroy
+    appointment = find_appointment
+    appointment.destroy
+    head :no_content
+  end
+
 
 private
 
