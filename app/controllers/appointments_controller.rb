@@ -13,6 +13,11 @@ class AppointmentsController < ApplicationController
     render json: Appointment.create!(appointment_params), status: :created
   end
 
+  def update
+    appointment = find_appointment
+    render json: appointment.update!(appointment_params), status: :ok
+  end
+
 
 private
 
