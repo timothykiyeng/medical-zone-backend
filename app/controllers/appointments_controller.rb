@@ -5,3 +5,10 @@ class AppointmentsController < ApplicationController
   end
 
 end
+
+
+private
+
+def find_appointment
+  Appointment.find(params[:id])
+end
