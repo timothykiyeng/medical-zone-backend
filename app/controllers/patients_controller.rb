@@ -1,6 +1,8 @@
 class PatientsController < ApplicationController
     wrap_parameters format: []
+    skip_before_action :authorized, only: [:create, :index]
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
+    rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
     def index
         patients = Patient.all
@@ -13,7 +15,7 @@ class PatientsController < ApplicationController
     end
 
     def create
-        patient = Patient.create(patient_params)
+        patient = Patient.create!(patient_params)
         render json: patient, status: :created
     end
 
@@ -38,11 +40,14 @@ class PatientsController < ApplicationController
     private
 
     def patient_params
-        params.permit(:id, :name, :age, :birth_date, :email, :diagnosis, :password_digest, :gender)
+        params.permit(:id, :name, :age, :birth_date, :email, :diagnosis, :password, :gender)
     end
 
     def render_not_found_response
         render json: { error: "Patient not found" }, status: :not_found
     end
+    def record_invalid(invalid)
+        render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
+    end
 end
-end
+
