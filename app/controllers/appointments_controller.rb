@@ -17,3 +17,7 @@ private
 def find_appointment
   Appointment.find(params[:id])
 end
+
+def appointment_params
+  params.permit(:id, :title, :start_date, :end_date, :notes, :patient_id, :doctor_id)
+end
