@@ -1,5 +1,8 @@
 class AppointmentsController < ApplicationController
 
+  rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
+    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
   def index
     render json: Appointment.all.order(:start_date), status: :ok
   end
@@ -35,5 +38,12 @@ def appointment_params
   params.permit(:id, :title, :start_date, :end_date, :notes, :patient_id, :doctor_id)
 end
 
+def record_invalid(invalid)
+  render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
+end
+
+def record_not_found(not_found)
+  render json: not_found, status: 404
+end 
 
 end
