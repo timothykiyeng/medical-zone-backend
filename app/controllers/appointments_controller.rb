@@ -4,6 +4,11 @@ class AppointmentsController < ApplicationController
     render json: Appointment.all.order(:start_date), status: :ok
   end
 
+  def show
+    appointment = find_appointment
+    render json: appointment, status: :ok
+  end
+
 end
 
 
