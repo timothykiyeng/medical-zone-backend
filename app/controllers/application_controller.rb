@@ -23,21 +23,26 @@ class ApplicationController < ActionController::API
     end
   end
 
-  def current_user
-    if decoded_token
-      user_id = decoded_token[0]["user_id"]
-      @user = User.find_by(id: user_id)
-    end
-  end
-
-  def logged_in?
-    !!current_user
-  end
-
   def authorized
     unless logged_in?
       render json: { message: "Please log in" }, status: :unauthorized
     end
+  end
+
+  def current_user
+    if decoded_token
+      doctor_id = decoded_token[0]['doctor_id']
+      doctor = Doctor.find_by(id: doctor_id)
+    end
+  end
+def current_patient
+  if decoded_token
+    patient_id = decoded_token[0]['patient_id']
+    patient = Patient.find_by(id: patient_id)
+  end
+end
+  def logged_in?
+    !!current_user || !!current_patient
   end
 end
 
