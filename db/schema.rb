@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_09_152900) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_12_125344) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,9 +18,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_152900) do
     t.string "title"
     t.string "start_date"
     t.string "end_date"
-    t.string "notes"
+    t.string "Description"
     t.integer "patient_id"
-    t.string "doctor_id"
+    t.integer "doctor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -42,10 +42,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_152900) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "doc"
+    t.boolean "is_available"
   end
 
   create_table "medical_histories", force: :cascade do |t|
-    t.string "diagnosis"
+    t.text "diagnosis"
     t.integer "patient_id"
     t.string "test_date"
     t.datetime "created_at", null: false
@@ -55,13 +57,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_09_152900) do
   create_table "patients", force: :cascade do |t|
     t.string "name"
     t.integer "age"
-    t.integer "birth_date"
+    t.string "birthdate"
     t.string "email"
-    t.string "diagnosis"
     t.string "gender"
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "doc"
   end
 
 end
