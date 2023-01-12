@@ -1,18 +1,27 @@
 class SessionsController < ApplicationController
-  def create
-    patient=Patient.find_by(username:params[:username])
-    if patient&.authenticate(params[:password])
-        session[:user_id]=patient.id
-        render json: {success:"Welcome #{patient.username}"}
+  skip_before_action :authorize, only: [:doclogin, :patientlogin]
+  skip_before_action :is_doc, only: [:doclogin, :patientlogin]
+  def doclogin
+    user = Doctor.find_by(email: params[:email])
+    if user&.authenticate(params[:password])
+      session[:current_user] = user.id
+      render json: user, status: :ok
     else
-        render json:{error:"Invalid username or password"}, status: :unauthorized
+      render json: { error: ["invalid email and/or password"] }, status: :unauthorized
     end
+  end
+  def patientlogin
+    user = Patient.find_by(email: params[:email])
+    if user&.authenticate(params[:password])
+      session[:current_user] = user.id
+      render json: user, status: :ok
+    else
+      render json: { error: ["invalid email and/or password"] }, status: :unauthorized
+    end
+  end
+  def logout
+    session.delete :current_user
+  end
 end
 
-def destroy
-    session.delete :user_id
 
-  return head :no_content
-end
-
-end
