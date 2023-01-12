@@ -1,14 +1,17 @@
 class DoctorsController < ApplicationController
+    skip_before_action :authorize
+    skip_before_action :is_doc
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_message
     rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
+   
     def index
         doctors = Doctor.all
         render json: doctors, status: :ok
     end
 
     def show
-        doctor = find_doctor
-        render json: doctor.to_json(only: [:title, :name, :bio, :department_id, :email], include: [department: {only: [:id]}])
+        doctor = Doctor.find(params[:id])
+        render json: doctor, status: :ok
     end
 
     private
