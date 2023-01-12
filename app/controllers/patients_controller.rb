@@ -1,6 +1,8 @@
 class PatientsController < ApplicationController
     wrap_parameters format: []
-    skip_before_action :authorized, only: [:create, :index]
+
+    skip_before_action :is_doc, only: [:create]
+    skip_before_action :authorize, only: [:create]
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
     rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
@@ -19,14 +21,6 @@ class PatientsController < ApplicationController
         render json: patient, status: :created
     end
 
-    def update
-        patient = Patient.find_by(id:params[:id])
-        Patient.update!(patient_params)
-        render json: patient, status: :accepted
-        rescue ActiveRecord::RecordInvalid =>e
-          render json: {error: e.record.errors.full_messages}, status: :unprocessable_entity
-    end
-
     def destroy
         patient = Patient.find_by(id: params[:id])
         if patient
@@ -40,7 +34,7 @@ class PatientsController < ApplicationController
     private
 
     def patient_params
-        params.permit(:id, :name, :age, :birth_date, :email, :diagnosis, :password, :gender)
+        params.permit(:name, :age, :birthdate, :email, :gender, :password, :password_confirmation, :doc)
     end
 
     def render_not_found_response
