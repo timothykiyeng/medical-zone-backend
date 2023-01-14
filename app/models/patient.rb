@@ -16,5 +16,6 @@ class Patient < ApplicationRecord
     validates :name, presence: true
     validates :password, confirmation: true
     validates :password_confirmation, presence: true
+    validates :my_email_attribute, email: true
     validates :password, format: PASSWORD_REQUIREMENTS
 end
