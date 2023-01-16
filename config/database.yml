@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: medical_zone_production
-  username: medical_zone
-  password: <%= ENV["MEDICAL_ZONE_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
