@@ -1,3 +1,8 @@
+Department.destroy_all
+Patient.destroy_all
+Doctor.destroy_all
+Appointment.destroy_all
+MedicalHistory.destroy_all
 
 require 'faker'
 
@@ -68,7 +73,7 @@ puts 'Seeding appointments..'
     start_date: DateTime.new(2022,6,rand(1..30),rand(1..19),rand(1.60)),
     end_date: DateTime.new(2022,6,rand(1..30),rand(6..19),rand(1.60)),
     description: 'Suffering from Weakness or loss of muscle strength'
-  ) 
+  )
 
 
 puts 'Seeding results..'
