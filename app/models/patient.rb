@@ -9,4 +9,5 @@ class Patient < ApplicationRecord
     validates :email, presence: true, uniqueness: true
     validates :name, presence: true
     validates :email, email: true
+    validates :password, presence: true, length: { minimum: 6, maximum: 255 }
 end
