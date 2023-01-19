@@ -1,8 +1,10 @@
 class Doctor < ApplicationRecord
-    belongs_to :department
-    has_many :appointments
-    has_many :patients, through: :appointments
     has_secure_password
+
+    belongs_to :department
+    has_many :appointments, dependent: :nullify
+    has_many :patients, through: :appointments
+  
 
     def permitted_email
         unless email.match?(/medizone.com/)
