@@ -1,7 +1,7 @@
 class AppointmentsController < ApplicationController
 
-  #skip_before_action :is_doc, only: [:index, :create]
-  #skip_before_action :authorize, only: [:index, :create]
+  skip_before_action :is_doc, only: [:index, :create]
+  skip_before_action :authorize, only: [:index, :create]
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
