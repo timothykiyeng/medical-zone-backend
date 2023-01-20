@@ -4,26 +4,26 @@ Doctor.destroy_all
 Appointment.destroy_all
 MedicalHistory.destroy_all
 
-require 'faker'
+#require 'faker'
 
 puts "🌱 Seeding spices..."
 puts 'Seeding departments..'
-Department.create(name: 'Anesthesiology', image_url: 'https://www.flaticon.com/free-icon/anesthesia_993273')
-Department.create(name: 'Cardiology', image_url: 'https://www.flaticon.com/free-icon/heart-rate_5935895?term=cardiology&related_id=5935895')
-Department.create(name: 'Ear, Nose, and Throat (ENT)', image_url: 'https://www.flaticon.com/free-icon/throat_392924?term=ent&page=1&position=14&origin=search&related_id=392924')
-Department.create(name: 'Pediactrics', image_url: 'https://www.flaticon.com/free-icon/pediatrics_8123474?term=pediatrics&page=1&position=5&origin=search&related_id=8123474')
-Department.create(name: 'Emergency Medicine', image_url: 'https://www.flaticon.com/free-icon/aid-kit_6338213?term=emergency+medicine&page=1&position=37&origin=search&related_id=6338213')
-Department.create(name: 'General Surgery', image_url: 'https://www.flaticon.com/free-icon/anesthesia_5506757?related_id=5506757')
-Department.create(name: 'Hematology', image_url: 'https://www.flaticon.com/free-icon/hematology_6466767?term=hematology&page=1&position=23&origin=search&related_id=6466767')
-Department.create(name: 'Oncology', image_url: 'https://www.flaticon.com/free-icon/oncology_2885298?term=oncology&page=1&position=3&origin=search&related_id=2885298')
-Department.create(name: 'Vascular', image_url: 'https://www.flaticon.com/free-icon/heart-disease_6349813?term=vascular&page=1&position=47&origin=search&related_id=6349813')
-Department.create(name: 'Neurology', image_url: 'https://www.flaticon.com/free-icon/neurology_9133531?term=neurology&page=1&position=31&origin=search&related_id=9133531')
+Department.create(name: 'Anesthesiology', image: 'https://www.flaticon.com/free-icon/anesthesia_993273')
+Department.create(name: 'Cardiology', image: 'https://www.flaticon.com/free-icon/heart-rate_5935895?term=cardiology&related_id=5935895')
+Department.create(name: 'Ear, Nose, and Throat (ENT)', image: 'https://www.flaticon.com/free-icon/throat_392924?term=ent&page=1&position=14&origin=search&related_id=392924')
+Department.create(name: 'Pediactrics', image: 'https://www.flaticon.com/free-icon/pediatrics_8123474?term=pediatrics&page=1&position=5&origin=search&related_id=8123474')
+Department.create(name: 'Emergency Medicine', image: 'https://www.flaticon.com/free-icon/aid-kit_6338213?term=emergency+medicine&page=1&position=37&origin=search&related_id=6338213')
+Department.create(name: 'General Surgery', image: 'https://www.flaticon.com/free-icon/anesthesia_5506757?related_id=5506757')
+Department.create(name: 'Hematology', image: 'https://www.flaticon.com/free-icon/hematology_6466767?term=hematology&page=1&position=23&origin=search&related_id=6466767')
+Department.create(name: 'Oncology', image: 'https://www.flaticon.com/free-icon/oncology_2885298?term=oncology&page=1&position=3&origin=search&related_id=2885298')
+Department.create(name: 'Vascular', image: 'https://www.flaticon.com/free-icon/heart-disease_6349813?term=vascular&page=1&position=47&origin=search&related_id=6349813')
+Department.create(name: 'Neurology', image: 'https://www.flaticon.com/free-icon/neurology_9133531?term=neurology&page=1&position=31&origin=search&related_id=9133531')
 
 puts 'Seeding patients..'
-Patient.create(name: "Ben Anthony", age: rand(18..65), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), email: "ba1@gmail.com", password: "123", gender:'Male', doc: false)
-Patient.create(name: "Jenna Adams", age: rand(18..65), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), email: "jenna@gmail.com", password: "124", gender:'Female', doc: false)
-Patient.create(name: "Anna Johns", age: rand(18..65), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), email: "anna@gmail.com", password: "125", gender:'Female', doc: false)
-Patient.create(name: "Anthony Caleb", age: rand(18..65), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), email: "ca1@gmail.com", password: "126", gender:'Male', doc: false)
+Patient.create(name: "Ben Anthony", age: 30, birthdate: "1986-04-20", email: "ba1@gmail.com", password: "123", gender:'Male', doc: false)
+Patient.create(name: "Jenna Adams", age: 34, birthdate: "1987-05-21", email: "jenna@gmail.com", password: "124", gender:'Female', doc: false)
+Patient.create(name: "Anna Johns", age: 23, birthdate: "1985-02-28", email: "anna@gmail.com", password: "125", gender:'Female', doc: false)
+Patient.create(name: "Anthony Caleb", age: 20, birthdate: "1980-02-28", email: "ca1@gmail.com", password: "126", gender:'Male', doc: false)
 
 puts 'Seeding doctors..'
 Doctor.create(title: 'MD', name: 'Bruno Rodrigues', bio: 'Bruno Rodrigues is a doctor (MD or DO) who practices anesthesia. Anesthesiologists are physicians specializing in perioperative care, developing anesthetic plans, and the administration of anesthetics.', department_id: 1, patient_id: 1, email: 'bruno@medizone.com', password: '123', image_url:'https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80', doc: true, is_available: true)
@@ -43,8 +43,8 @@ puts 'Seeding appointments..'
     doctor_id: 4,
     patient_id: 1,
     title: 'Pediactrics',
-    start_date: DateTime.new(2022,6,rand(1..30),rand(1..19),rand(1.60)),
-    end_date: DateTime.new(2022,6,rand(1..30),rand(6..19),rand(1.60)),
+    startDate: DateTime.new(2023,1,rand(1..30),rand(1..19),rand(1.10)),
+    endDate: DateTime.new(2023,1,rand(1..30),rand(6..19),rand(1.60)),
     description: 'My daughter has a mysterious rash that wont go away'
   )
 
@@ -52,8 +52,8 @@ puts 'Seeding appointments..'
     doctor_id: 7,
     patient_id: 2,
     title: 'Hematology',
-    start_date: DateTime.new(2022,6,rand(1..30),rand(1..19),rand(1.60)),
-    end_date: DateTime.new(2022,6,rand(1..30),rand(6..19),rand(1.60)),
+    startDate: DateTime.new(2023,1,rand(1..30),rand(1..19),rand(1.60)),
+    endDate: DateTime.new(2023,1,rand(1..30),rand(6..19),rand(1.60)),
     description: 'My blood takes a lot of time to clot'
   )
 
@@ -61,8 +61,8 @@ puts 'Seeding appointments..'
     doctor_id: 8,
     patient_id: 3,
     title: 'Oncology',
-    start_date: DateTime.new(2022,6,rand(1..30),rand(1..19),rand(1.60)),
-    end_date: DateTime.new(2022,6,rand(1..30),rand(6..19),rand(1.60)),
+    startDate: DateTime.new(2023,1,rand(1..30),rand(1..19),rand(1.60)),
+    endDate: DateTime.new(2023,1,rand(1..30),rand(6..19),rand(1.60)),
     description: 'I am experiencing shortness of breath, headaches, and diziness'
   )
 
@@ -70,8 +70,8 @@ puts 'Seeding appointments..'
     doctor_id: 10,
     patient_id: 4,
     title: 'Neurology',
-    start_date: DateTime.new(2022,6,rand(1..30),rand(1..19),rand(1.60)),
-    end_date: DateTime.new(2022,6,rand(1..30),rand(6..19),rand(1.60)),
+    startDate: DateTime.new(2023,1,rand(1..30),rand(1..19),rand(1.60)),
+    endDate: DateTime.new(2023,1,rand(1..30),rand(6..19),rand(1.60)),
     description: 'Suffering from Weakness or loss of muscle strength'
   )
 
@@ -80,25 +80,25 @@ puts 'Seeding results..'
     MedicalHistory.create(
     diagnosis: 'Anemia: This involves the body producing too few healthy red blood cells to carry enough oxygen around the body.',
     patient_id: 2,
-    test_date: DateTime.new(2022,6,rand(1..30),rand(1..19),rand(1.60))
+    test_date: DateTime.new(2023,1,rand(1..30),rand(1..19),rand(1.60))
   )
 
   MedicalHistory.create(
     diagnosis: 'Chickenpox: Viral rashes in babies, toddlers and kids are caused by a variety of different viruses.',
     patient_id: 1,
-    test_date: DateTime.new(2022,6,rand(1..30),rand(1..19),rand(1.60))
+    test_date: DateTime.new(2023,1,rand(1..30),rand(1..19),rand(1.60))
   )
 
   MedicalHistory.create(
     diagnosis: 'Bone Caner: Bone scans are a type of nuclear scan that check for abnormal areas or damage in the bones.',
     patient_id: 3,
-    test_date: DateTime.new(2022,6,rand(1..30),rand(1..19),rand(1.60))
+    test_date: DateTime.new(2023,1,rand(1..30),rand(1..19),rand(1.60))
   )
 
   MedicalHistory.create(
     diagnosis: 'Epilepsy',
     patient_id: 4,
-    test_date: DateTime.new(2022,6,rand(1..30),rand(1..19),rand(1.60))
+    test_date: DateTime.new(2023,1,rand(1..30),rand(1..19),rand(1.60))
   )
 puts "🌱 Seeding done..."
 

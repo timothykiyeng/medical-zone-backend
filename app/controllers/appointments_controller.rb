@@ -6,7 +6,7 @@ class AppointmentsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def index
-    render json: Appointment.all.order(:start_date), status: :ok
+    render json: Appointment.all.order(:startDate), status: :ok
   end
 
   def show
@@ -37,7 +37,7 @@ def find_appointment
 end
 
 def appointment_params
-  params.permit(:id, :title, :start_date, :end_date, :description, :patient_id, :doctor_id)
+  params.permit(:id, :title, :startDate, :endDate, :description, :patient_id, :doctor_id)
 end
 
 def record_invalid(invalid)
