@@ -3,16 +3,16 @@ require 'faker'
 
 puts "🌱 Seeding spices..."
 puts 'Seeding departments..'
-Department.create(name: 'Anesthesiology', image_url: 'https://www.flaticon.com/free-icon/anesthesia_993273')
-Department.create(name: 'Cardiology', image_url: 'https://www.flaticon.com/free-icon/heart-rate_5935895?term=cardiology&related_id=5935895')
-Department.create(name: 'Ear, Nose, and Throat (ENT)', image_url: 'https://www.flaticon.com/free-icon/throat_392924?term=ent&page=1&position=14&origin=search&related_id=392924')
-Department.create(name: 'Pediactrics', image_url: 'https://www.flaticon.com/free-icon/pediatrics_8123474?term=pediatrics&page=1&position=5&origin=search&related_id=8123474')
-Department.create(name: 'Emergency Medicine', image_url: 'https://www.flaticon.com/free-icon/aid-kit_6338213?term=emergency+medicine&page=1&position=37&origin=search&related_id=6338213')
-Department.create(name: 'General Surgery', image_url: 'https://www.flaticon.com/free-icon/anesthesia_5506757?related_id=5506757')
-Department.create(name: 'Hematology', image_url: 'https://www.flaticon.com/free-icon/hematology_6466767?term=hematology&page=1&position=23&origin=search&related_id=6466767')
-Department.create(name: 'Oncology', image_url: 'https://www.flaticon.com/free-icon/oncology_2885298?term=oncology&page=1&position=3&origin=search&related_id=2885298')
-Department.create(name: 'Vascular', image_url: 'https://www.flaticon.com/free-icon/heart-disease_6349813?term=vascular&page=1&position=47&origin=search&related_id=6349813')
-Department.create(name: 'Neurology', image_url: 'https://www.flaticon.com/free-icon/neurology_9133531?term=neurology&page=1&position=31&origin=search&related_id=9133531')
+Department.create(name: 'Anesthesiology', image: 'https://www.flaticon.com/free-icon/anesthesia_993273')
+Department.create(name: 'Cardiology', image: 'https://www.flaticon.com/free-icon/heart-rate_5935895?term=cardiology&related_id=5935895')
+Department.create(name: 'Ear, Nose, and Throat (ENT)', image: 'https://www.flaticon.com/free-icon/throat_392924?term=ent&page=1&position=14&origin=search&related_id=392924')
+Department.create(name: 'Pediactrics', image: 'https://www.flaticon.com/free-icon/pediatrics_8123474?term=pediatrics&page=1&position=5&origin=search&related_id=8123474')
+Department.create(name: 'Emergency Medicine', image: 'https://www.flaticon.com/free-icon/aid-kit_6338213?term=emergency+medicine&page=1&position=37&origin=search&related_id=6338213')
+Department.create(name: 'General Surgery', image: 'https://www.flaticon.com/free-icon/anesthesia_5506757?related_id=5506757')
+Department.create(name: 'Hematology', image: 'https://www.flaticon.com/free-icon/hematology_6466767?term=hematology&page=1&position=23&origin=search&related_id=6466767')
+Department.create(name: 'Oncology', image: 'https://www.flaticon.com/free-icon/oncology_2885298?term=oncology&page=1&position=3&origin=search&related_id=2885298')
+Department.create(name: 'Vascular', image: 'https://www.flaticon.com/free-icon/heart-disease_6349813?term=vascular&page=1&position=47&origin=search&related_id=6349813')
+Department.create(name: 'Neurology', image: 'https://www.flaticon.com/free-icon/neurology_9133531?term=neurology&page=1&position=31&origin=search&related_id=9133531')
 
 puts 'Seeding patients..'
 Patient.create(name: "Ben Anthony", age: rand(18..65), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), email: "ba1@gmail.com", password: "Power1234#", gender:'Male', doc: false)
@@ -38,8 +38,9 @@ puts 'Seeding appointments..'
     doctor_id: 4,
     patient_id: 1,
     title: 'Pediactrics',
-    start_date: Date.new(2023,1,rand(1..30)),
-    end_date: Date.new(2023,1,rand(1..30)),
+    location: 'Room 21',
+    startDate: Date.new(2023,1,rand(1..30)),
+    endDate: Date.new(2023,1,rand(1..30)),
     description: 'My daughter has a mysterious rash that wont go away'
   )
 
@@ -47,8 +48,9 @@ puts 'Seeding appointments..'
     doctor_id: 7,
     patient_id: 2,
     title: 'Hematology',
-    start_date: Date.new(2023,1,rand(1..30)),
-    end_date: Date.new(2023,1,rand(1..30)),
+    location: 'Room 11',
+    startDate: Date.new(2023,1,rand(1..30)),
+    endDate: Date.new(2023,1,rand(1..30)),
     description: 'My blood takes a lot of time to clot'
   )
 
@@ -56,8 +58,9 @@ puts 'Seeding appointments..'
     doctor_id: 8,
     patient_id: 3,
     title: 'Oncology',
-    start_date: Date.new(2023,1,rand(1..30)),
-    end_date: Date.new(2023,1,rand(1..30)),
+    location: 'Room 14',
+    startDate: Date.new(2023,1,rand(1..30)),
+    endDate: Date.new(2023,1,rand(1..30)),
     description: 'I am experiencing shortness of breath, headaches, and diziness'
   )
 
@@ -65,8 +68,9 @@ puts 'Seeding appointments..'
     doctor_id: 10,
     patient_id: 4,
     title: 'Neurology',
-    start_date: Date.new(2023,2,rand(1..30)),
-    end_date: Date.new(2023,2,rand(1..30)),
+    location: 'Room 7',
+    startDate: Date.new(2023,2,rand(1..30)),
+    endDate: Date.new(2023,2,rand(1..30)),
     description: 'Suffering from Weakness or loss of muscle strength'
   )
 

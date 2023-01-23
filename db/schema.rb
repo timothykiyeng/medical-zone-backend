@@ -16,8 +16,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_182255) do
 
   create_table "appointments", force: :cascade do |t|
     t.string "title"
-    t.string "start_date"
-    t.string "end_date"
+    t.string "location"
+    t.string "startDate"
+    t.string "endDate"
     t.string "description"
     t.integer "patient_id"
     t.integer "doctor_id"
@@ -27,7 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_182255) do
 
   create_table "departments", force: :cascade do |t|
     t.string "name"
-    t.string "image_url"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
