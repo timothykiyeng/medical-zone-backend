@@ -1,9 +1,4 @@
 class AppointmentsController < ApplicationController
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> 3fd7f218b8fd2c806c7a4a869cffa9bd76e03873
   skip_before_action :is_doc, only: [:index, :create]
   skip_before_action :authorize, only: [:index, :create]
   rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
