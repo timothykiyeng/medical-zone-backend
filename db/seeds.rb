@@ -1,3 +1,8 @@
+Department.destroy_all
+Patient.destroy_all
+Doctor.destroy_all
+Appointment.destroy_all
+MedicalHistory.destroy_all
 
 require 'faker'
 
@@ -41,7 +46,7 @@ puts 'Seeding appointments..'
     location: 'Room 21',
     startDate: Date.new(2023,1,rand(1..30)),
     endDate: Date.new(2023,1,rand(1..30)),
-    description: 'My daughter has a mysterious rash that wont go away'
+    description: 'Carry previous medication'
   )
 
   Appointment.create(
@@ -51,7 +56,7 @@ puts 'Seeding appointments..'
     location: 'Room 11',
     startDate: Date.new(2023,1,rand(1..30)),
     endDate: Date.new(2023,1,rand(1..30)),
-    description: 'My blood takes a lot of time to clot'
+    description: 'Come prepared for various tests'
   )
 
   Appointment.create(
@@ -61,7 +66,17 @@ puts 'Seeding appointments..'
     location: 'Room 14',
     startDate: Date.new(2023,1,rand(1..30)),
     endDate: Date.new(2023,1,rand(1..30)),
-    description: 'I am experiencing shortness of breath, headaches, and diziness'
+    description: 'Come ready for MRI test'
+  )
+
+  Appointment.create(
+    doctor_id: 10,
+    patient_id: 4,
+    title: 'Neurology',
+    location: 'Room 7',
+    startDate: Date.new(2023,1,rand(1..30)),
+    endDate: Date.new(2023,1,rand(1..30)),
+    description: 'Come ready for MRI test'
   )
 
   Appointment.create(
@@ -71,7 +86,7 @@ puts 'Seeding appointments..'
     location: 'Room 7',
     startDate: Date.new(2023,2,rand(1..30)),
     endDate: Date.new(2023,2,rand(1..30)),
-    description: 'Suffering from Weakness or loss of muscle strength'
+    description: 'You will undergo a sensory test'
   )
 
 
