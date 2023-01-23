@@ -4,7 +4,7 @@ Doctor.destroy_all
 Appointment.destroy_all
 MedicalHistory.destroy_all
 
-require 'faker'
+#require 'faker'
 
 puts "🌱 Seeding spices..."
 puts 'Seeding departments..'
@@ -20,8 +20,8 @@ Department.create(name: 'Vascular', image: 'https://www.flaticon.com/free-icon/h
 Department.create(name: 'Neurology', image: 'https://www.flaticon.com/free-icon/neurology_9133531?term=neurology&page=1&position=31&origin=search&related_id=9133531')
 
 puts 'Seeding patients..'
-Patient.create(name: "Ben Anthony", age: rand(18..65), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), email: "ba1@gmail.com", password: "Power1234#", gender:'Male', doc: false)
-Patient.create(name: "Jenna Adams", age: rand(18..65), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), email: "jenna@gmail.com", password: "Power124#", gender:'Female', doc: false)
+Patient.create(name: "Ben Anthony", age: rand(18..65), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), email: "ba1@gmail.com", password: "123", gender:'Male', doc: false)
+Patient.create(name: "Jenna Adams", age: rand(18..65), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), email: "jenna@gmail.com", password: "124", gender:'Female', doc: false)
 Patient.create(name: "Anna Johns", age: rand(18..65), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), email: "anna@gmail.com", password: "125", gender:'Female', doc: false)
 Patient.create(name: "Anthony Caleb", age: rand(18..65), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), email: "ca1@gmail.com", password: "126", gender:'Male', doc: false)
 
@@ -43,76 +43,62 @@ puts 'Seeding appointments..'
     doctor_id: 4,
     patient_id: 1,
     title: 'Pediactrics',
-    location: 'Room 21',
-    startDate: Date.new(2023,1,rand(1..30)),
-    endDate: Date.new(2023,1,rand(1..30)),
-    description: 'Carry previous medication'
+    start_date: DateTime.new(2022,6,rand(1..30),rand(1..19),rand(1.60)),
+    end_date: DateTime.new(2022,6,rand(1..30),rand(6..19),rand(1.60)),
+    description: 'My daughter has a mysterious rash that wont go away'
   )
 
   Appointment.create(
     doctor_id: 7,
     patient_id: 2,
     title: 'Hematology',
-    location: 'Room 11',
-    startDate: Date.new(2023,1,rand(1..30)),
-    endDate: Date.new(2023,1,rand(1..30)),
-    description: 'Come prepared for various tests'
+    start_date: DateTime.new(2022,6,rand(1..30),rand(1..19),rand(1.60)),
+    end_date: DateTime.new(2022,6,rand(1..30),rand(6..19),rand(1.60)),
+    description: 'My blood takes a lot of time to clot'
   )
 
   Appointment.create(
     doctor_id: 8,
     patient_id: 3,
     title: 'Oncology',
-    location: 'Room 14',
-    startDate: Date.new(2023,1,rand(1..30)),
-    endDate: Date.new(2023,1,rand(1..30)),
-    description: 'Come ready for MRI test'
+    start_date: DateTime.new(2022,6,rand(1..30),rand(1..19),rand(1.60)),
+    end_date: DateTime.new(2022,6,rand(1..30),rand(6..19),rand(1.60)),
+    description: 'I am experiencing shortness of breath, headaches, and diziness'
   )
 
   Appointment.create(
     doctor_id: 10,
     patient_id: 4,
     title: 'Neurology',
-    location: 'Room 7',
-    startDate: Date.new(2023,1,rand(1..30)),
-    endDate: Date.new(2023,1,rand(1..30)),
-    description: 'Come ready for MRI test'
-  )
-
-  Appointment.create(
-    doctor_id: 10,
-    patient_id: 4,
-    title: 'Neurology',
-    location: 'Room 7',
-    startDate: Date.new(2023,2,rand(1..30)),
-    endDate: Date.new(2023,2,rand(1..30)),
-    description: 'You will undergo a sensory test'
-  )
+    start_date: DateTime.new(2022,6,rand(1..30),rand(1..19),rand(1.60)),
+    end_date: DateTime.new(2022,6,rand(1..30),rand(6..19),rand(1.60)),
+    description: 'Suffering from Weakness or loss of muscle strength'
+  ) 
 
 
 puts 'Seeding results..'
     MedicalHistory.create(
     diagnosis: 'Anemia: This involves the body producing too few healthy red blood cells to carry enough oxygen around the body.',
     patient_id: 2,
-    test_date: Date.new(2022,12,rand(1..30))
+    test_date: DateTime.new(2022,6,rand(1..30),rand(1..19),rand(1.60))
   )
 
   MedicalHistory.create(
     diagnosis: 'Chickenpox: Viral rashes in babies, toddlers and kids are caused by a variety of different viruses.',
     patient_id: 1,
-    test_date: Date.new(2022,12,rand(1..30))
+    test_date: DateTime.new(2022,6,rand(1..30),rand(1..19),rand(1.60))
   )
 
   MedicalHistory.create(
     diagnosis: 'Bone Caner: Bone scans are a type of nuclear scan that check for abnormal areas or damage in the bones.',
     patient_id: 3,
-    test_date: Date.new(2022,12,rand(1..30))
+    test_date: DateTime.new(2022,6,rand(1..30),rand(1..19),rand(1.60))
   )
 
   MedicalHistory.create(
     diagnosis: 'Epilepsy',
     patient_id: 4,
-    test_date: Date.new(2022,12,rand(1..30))
+    test_date: DateTime.new(2022,6,rand(1..30),rand(1..19),rand(1.60))
   )
 puts "🌱 Seeding done..."
 

@@ -15,13 +15,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_182255) do
   enable_extension "plpgsql"
 
   create_table "appointments", force: :cascade do |t|
+<<<<<<< HEAD
     t.string "title"
     t.string "location"
     t.string "startDate"
     t.string "endDate"
     t.string "description"
+=======
+>>>>>>> 3fd7f218b8fd2c806c7a4a869cffa9bd76e03873
     t.integer "patient_id"
     t.integer "doctor_id"
+    t.string "startDate"
+    t.string "endDate"
+    t.string "title"
+    t.string "location"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
