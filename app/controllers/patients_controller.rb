@@ -1,14 +1,13 @@
 class PatientsController < ApplicationController
-    wrap_parameters format: []
+    # wrap_parameters format: []
 
-    skip_before_action :is_doc, only: [:create]
-    skip_before_action :authorize, only: [:create]
+    skip_before_action :is_doc, only: [:create, :index]
+    skip_before_action :authorize, only: [:create, :index]
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
     rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
     def index
-        patients = Patient.all
-        render json: patients, status: :ok
+        render json: Patient.all.order(:name), status: :ok
     end 
 
     def show
