@@ -1,12 +1,10 @@
-Department.destroy_all
-Patient.destroy_all
-Doctor.destroy_all
-Appointment.destroy_all
-MedicalHistory.destroy_all
+# Department.destroy_all
+# Patient.destroy_all
+# Doctor.destroy_all
+# Appointment.destroy_all
+# MedicalHistory.destroy_all
 
-#require 'faker'
-
-puts "🌱 Seeding spices..."
+require 'faker'
 puts 'Seeding departments..'
 Department.create(name: 'Anesthesiology', image: 'https://www.flaticon.com/free-icon/anesthesia_993273')
 Department.create(name: 'Cardiology', image: 'https://www.flaticon.com/free-icon/heart-rate_5935895?term=cardiology&related_id=5935895')
@@ -20,10 +18,10 @@ Department.create(name: 'Vascular', image: 'https://www.flaticon.com/free-icon/h
 Department.create(name: 'Neurology', image: 'https://www.flaticon.com/free-icon/neurology_9133531?term=neurology&page=1&position=31&origin=search&related_id=9133531')
 
 puts 'Seeding patients..'
-Patient.create(name: "Ben Anthony", age: 30, birthdate: "1986-04-20", email: "ba1@gmail.com", password: "123", gender:'Male', doc: false)
-Patient.create(name: "Jenna Adams", age: 34, birthdate: "1987-05-21", email: "jenna@gmail.com", password: "124", gender:'Female', doc: false)
-Patient.create(name: "Anna Johns", age: 23, birthdate: "1985-02-28", email: "anna@gmail.com", password: "125", gender:'Female', doc: false)
-Patient.create(name: "Anthony Caleb", age: 20, birthdate: "1980-02-28", email: "ca1@gmail.com", password: "126", gender:'Male', doc: false)
+Patient.create(name: "Ben Anthony", age: rand(18..65), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), email: "ba1@gmail.com", password: "Power1234#", gender:'Male', doc: false)
+Patient.create(name: "Jenna Adams", age: rand(18..65), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), email: "jenna@gmail.com", password: "Power124#", gender:'Female', doc: false)
+Patient.create(name: "Anna Johns", age: rand(18..65), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), email: "anna@gmail.com", password: "125", gender:'Female', doc: false)
+Patient.create(name: "Anthony Caleb", age: rand(18..65), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), email: "ca1@gmail.com", password: "126", gender:'Male', doc: false)
 
 puts 'Seeding doctors..'
 Doctor.create(title: 'MD', name: 'Bruno Rodrigues', bio: 'Bruno Rodrigues is a doctor (MD or DO) who practices anesthesia. Anesthesiologists are physicians specializing in perioperative care, developing anesthetic plans, and the administration of anesthetics.', department_id: 1, patient_id: 1, email: 'bruno@medizone.com', password: '123', image_url:'https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80', doc: true, is_available: true)
@@ -78,17 +76,6 @@ puts 'Seeding appointments..'
     endDate: Date.new(2023,1,rand(1..30)),
     description: 'Come ready for MRI test'
   )
-
-  Appointment.create(
-    doctor_id: 10,
-    patient_id: 4,
-    title: 'Neurology',
-    location: 'Room 7',
-    startDate: Date.new(2023,2,rand(1..30)),
-    endDate: Date.new(2023,2,rand(1..30)),
-    description: 'You will undergo a sensory test'
-  )
-
 
 puts 'Seeding results..'
     MedicalHistory.create(

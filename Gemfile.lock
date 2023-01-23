@@ -83,8 +83,6 @@ GEM
     debug (1.7.1)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
-    email_validator (2.2.4)
-      activemodel
     erubi (1.12.0)
     faker (3.1.0)
       i18n (>= 1.8.11, < 2)
@@ -96,7 +94,6 @@ GEM
     irb (1.6.2)
       reline (>= 0.3.0)
     jsonapi-renderer (0.2.2)
-    jwt (2.6.0)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -148,7 +145,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.4.4)
+    rails-html-sanitizer (1.5.0)
       loofah (~> 2.19, >= 2.19.1)
     railties (7.0.4.1)
       actionpack (= 7.0.4.1)
@@ -177,9 +174,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap
   debug
-  email_validator
   faker
-  jwt (~> 2.5)
   pg (~> 1.1)
   puma (~> 5.0)
   rack-cors
