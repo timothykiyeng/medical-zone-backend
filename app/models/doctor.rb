@@ -1,7 +1,7 @@
 class Doctor < ApplicationRecord
     has_secure_password
 
-    belongs_to :department
+    belongs_to :department, optional: true
     has_many :appointments, dependent: :nullify
     has_many :patients, through: :appointments
   
