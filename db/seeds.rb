@@ -26,7 +26,8 @@ Patient.create(name: "Timothy Kiyeng", age: rand(18..65), birthdate: Faker::Date
     birthdate: Faker::Date.birthday(min_age: 18, max_age: 65),
     email: Faker::Internet.free_email,
     gender: Faker::Gender.binary_type,
-    password: Faker::Internet.password
+    password: Faker::Internet.password,
+    doc: false
   )
 end
   
