@@ -1,8 +1,7 @@
 class PatientsController < ApplicationController
-    # wrap_parameters format: []
 
-    skip_before_action :is_doc, only: [:create, :index]
-    skip_before_action :authorize, only: [:create, :index]
+    skip_before_action :is_doc, only: [:create, :index, :show]
+    skip_before_action :authorize, only: [:create, :index, :show]
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
     rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
 
@@ -11,7 +10,7 @@ class PatientsController < ApplicationController
     end 
 
     def show
-        patient = Patient.findy_by(id:params[:id])
+        patient = Patient.find_by(id:params[:id])
         render json: patient, status: :ok, include: :doctor
     end
 
