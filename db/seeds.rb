@@ -18,7 +18,7 @@ Department.create!(name: 'Vascular', image: 'https://www.flaticon.com/free-icon/
 Department.create!(name: 'Neurology', image: 'https://www.flaticon.com/free-icon/neurology_9133531?term=neurology&page=1&position=31&origin=search&related_id=9133531')
 
 puts 'Seeding patients..'
-Patient.create!(name: "Timothy Kiyeng", age: rand(18..65), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), email: "tim@gmail.com", gender: 'male', password: "123", doc: false)
+Patient.create!(name: "Timothy Kiyeng", age: rand(18..65), birthdate: Faker::Date.birthday(min_age: 18, max_age: 65), email: "tim@gmail.com", gender: 'male', password: "ghjkur9089", doc: false)
 
 20.times do
   Patient.create!(
